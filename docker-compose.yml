@@ -1,0 +1,19 @@
+version: '3.3'
+
+services:
+    #service 1: definition of psotgres database
+    postgres:
+      image: postgres
+      environment:
+        - POSTGRES_PASSWORD=hadir
+        - POSTGRES_USER=hadir
+        - POSTGRES_DB=base
+      ports:
+        - "5429:5432"
+      restart: always
+    api:
+      build:
+        context: ./
+        dockerfile: Dockerfile
+      ports:
+        - "3000:3000"
